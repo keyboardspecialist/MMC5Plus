@@ -149,7 +149,7 @@ vblankwait2:
 	lda	#$01
 	sta	MMC5_PRAM_PRO2
 	
-	lda	#$00
+	lda	#$7F		;last page of 1024KB
 	sta	MMC5_PRGRAM_BANK
 	
 	lda	#$0F
