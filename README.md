@@ -31,35 +31,9 @@ Sample NES 2.0 header (from mmc5p.s)
 
 The primary changes are with IO registers $5101 and $5113:
 
-Register $5101 adds a toggle at bit 7:
+Register $5101 adds a toggle at bit 7: [MxxxxxCC] 1 for RAM, 0 for ROM. All banking modes work with either.
 
-7  bit  0
----- ----
-Mxxx xxCC
-|      ||
-|      ++- Select CHR banking mode
-+--------- Toggle ROM(0)/RAM(1)
+Register $5113 is extended from [xxxxxCBB] to [xCBBBBB]. This mapping allows addressing up to 1024KB of memory.
 
 
-
-Standard MMC5 $5113
-
-7  bit  0
----- ----
-xxxx xCBB
-      |||
-      |++- Select 8KB PRG RAM bank at $6000-$7FFF
-      +--- Select PRG RAM chip
-      
-      
-New extended mode $5113
-
-7  bit  0
----- ----
-xCBB BBBB
- ||| ||||
- |++ ++++- Select 8KB PRG RAM bank at $6000-$7FFF
- +-------- Select PRG RAM chip
- 
- 
  Legacy writes remain fully compatible with this mapper. 
